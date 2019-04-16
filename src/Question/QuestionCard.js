@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import QuestionSentence from './QuestionSentence';
 import Button from './Button';
+import '../App.scss';
 
 class QuestionCard extends Component {
     constructor(props){
@@ -16,8 +17,8 @@ class QuestionCard extends Component {
 				<div>
 					<div>{this.state.question_num + 1 } / {this.state.question_all + 1}</div>
 					<QuestionSentence className = 'QuestionSentence' question_num = {this.state.question_num} />
-					<Button className = 'YesButton' question_num = {() => {this.onYesButtonClick();}} />
-					<Button className = 'NoButton' question_num = {() => {this.onNoButtonClick();}} />
+					<Button id = 'Yes' question_num = {() => {this.onYesButtonClick();}} />
+					<Button id = 'No' question_num = {() => {this.onNoButtonClick();}} />
 					{this.state.question_answer}
 				</div>
 			);

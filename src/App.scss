@@ -1,0 +1,15 @@
+.Button {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: #81D0FC;
+  border-radius: 50%;
+  display: block;
+  transition: background-color 0.5s ease-in;
+  -webkit-transition: background-color 0.5s ease-in;
+  &:hover {
+    background: #2a82a3;
+  }
+}
+
+#Yes {}
