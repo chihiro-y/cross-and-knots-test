@@ -1,15 +1,131 @@
+//iPhone8とiPhoneXの横幅のサイズ
+$iphone-width: 375px; 
+
+//ボタンの色
+$orange : #FCBC81;
+$blue: #81D0FC;
+$orange-hover: #E99447;
+$blue-hover: #3AA8E7;
+
+//文字
+$font-white: #FFFFFF;
+$font-gray: #5F5F5F;
+
+//質問カードの背景
+$card-white: #FFFFFF80;
+
+//VRゴーグルの背景グラデーション
+$vr-bg-gray: #979695;
+$vr-bg-black: #393939;
+
+//背景のグラデーション
+$bg-yellow: #FFF8D2;
+$bg-orange: #FCBB80;
+
+*{
+  box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: tbudgothic-std,sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+html{
+  height: 100%;
+}
+
+body{
+  display: flex;
+  background: linear-gradient($bg-orange, $bg-yellow);
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+#root{
+  height: 100%;
+  width: $iphone-width;
+}
+#contents{
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+#question-num{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  margin-right: 20px;
+  &-now{
+    font-size: 32px;
+    margin-bottom: -2px;
+  }
+  &-slash{
+    font-size:24px;
+    margin-bottom: 2px;
+    color: $font-gray;
+  }
+  &-all{
+    margin-bottom: 2px;
+    color: $font-gray;
+  }
+
+}
+#question-card{
+  display: flex;
+  align-items: center;
+  height: 355px;
+  width: 355px;
+  background-color: $card-white;
+  border-radius: 50%;
+}
+#vr-goggles{
+  display: flex;
+  flex-direction: column;
+  //justify-content: center;
+  width: 355px;
+  height: 170px;
+  background: linear-gradient(to right bottom, $vr-bg-gray, $vr-bg-black);
+  border-radius: 80px;
+}
+#question_sentence{
+  text-align: center;
+  font-size: 18px;
+  color: $font-white;
+  word-wrap: break-word;
+  padding: 22px 0px 22px 0px;
+}
+#button-choice{
+  display: flex;
+  margin: 0px 15px 0px 15px;
+  justify-content: space-around;
+}
+
 .Button {
-  position: absolute;
+  position: relative;
   width: 60px;
   height: 60px;
-  background: #81D0FC;
   border-radius: 50%;
   display: block;
-  transition: background-color 0.5s ease-in;
-  -webkit-transition: background-color 0.5s ease-in;
-  &:hover {
-    background: #2a82a3;
+  transition: background-color 0.3s ease-in;
+  -webkit-transition: background-color 0.3s ease-in;
+
+  //○を選んだ場合
+  &_knots{
+    @extend .Button;
+    background: url(./img/ic_knots.png) center center/32px 32px no-repeat $orange;
+    &:hover {
+      background: url(./img/ic_knots.png) center center/32px 32px no-repeat $orange-hover;
+    }
+  }
+  //×を選んだ場合
+  &_cross{
+    @extend .Button;
+    background: url(./img/ic_cross.png) center center/32px 32px no-repeat $blue;
+    &:hover {
+      background: url(./img/ic_cross.png) center center/32px 32px no-repeat $blue-hover;
+    }
   }
 }
+
 
 #Yes {}

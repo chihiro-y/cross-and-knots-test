@@ -5,8 +5,8 @@ import QuestionCard from './Question/QuestionCard';
 class App extends Component {
   render() {
     return (
-      <div>
-        <QuestionCard />
+      <div id = "contents">
+        <QuestionCard/>
       </div>
     );
   }
