@@ -5,8 +5,8 @@ class Button extends Component {
     return this.props.question_num()
   }
   render() {
-    var answer = this.props.answer;
-    var class_name = 'Button_'+ answer;
+    var choice = this.props.choice;
+    var class_name = 'Button_'+ choice;
     
     return (
       <div className = {class_name} onClick = {() => {this.clickButton();}}></div> 

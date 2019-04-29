@@ -4,8 +4,8 @@ $iphone-width: 375px;
 //ボタンの色
 $orange : #FCBC81;
 $blue: #81D0FC;
-$orange-hover: #E99447;
-$blue-hover: #3AA8E7;
+$orange-hover: #E47B1B;
+$blue-hover: #009DD0;
 
 //文字
 $font-white: #FFFFFF;
@@ -21,6 +21,7 @@ $vr-bg-black: #393939;
 //背景のグラデーション
 $bg-yellow: #FFF8D2;
 $bg-orange: #FCBB80;
+$bg-blue: #81D0FC;
 
 *{
   box-sizing: border-box;
@@ -32,7 +33,6 @@ $bg-orange: #FCBB80;
 html{
   height: 100%;
 }
-
 body{
   display: flex;
   background: linear-gradient($bg-orange, $bg-yellow);
@@ -92,7 +92,7 @@ body{
   font-size: 18px;
   color: $font-white;
   word-wrap: break-word;
-  padding: 22px 0px 22px 0px;
+  padding: 20px 0px 20px 0px;
 }
 #button-choice{
   display: flex;
@@ -127,5 +127,35 @@ body{
   }
 }
 
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(0,0,0, 0.5);
+}
+.popup_inner {
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  top: 25%;
+  bottom: 25%;
+  margin: auto;
+  background: white;
+  animation: fadeIn 2s ease 0s 1 normal;
+  -webkit-animation: fadeIn 2s ease 0s 1 normal;
+}
 
-#Yes {}
+@keyframes fadeIn {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
