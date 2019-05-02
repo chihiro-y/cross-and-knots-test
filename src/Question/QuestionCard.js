@@ -21,7 +21,6 @@ class QuestionCard extends Component {
 				<div id = 'question-num'>
 					<p id = 'question-num-now'>Q{this.state.question_num}</p><p id = 'question-num-slash'>/</p><p id = 'question-num-all'>{this.state.question_all }</p>
 				</div>
-				<p>{this.state.question_answer}</p>
 				<div id = 'question-card'>
 					<div id = 'vr-goggles'>
 						<QuestionSentence question_num = {this.state.question_num} />
@@ -30,6 +29,7 @@ class QuestionCard extends Component {
 							<ChoiceButton choice = 'cross' question_num = {(answer = '0') => {this.onButtonClick(answer);}} />
 						</div>
 					</div>
+					<div className = 'triangle'></div>
 				</div>
 				<button onClick={this.togglePopup.bind(this)}>show popup</button>
         {this.state.showPopup ? 

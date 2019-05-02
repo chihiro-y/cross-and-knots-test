@@ -9,7 +9,7 @@ $font-white: #FFFFFF;
 $font-gray: #5F5F5F;
 
 //質問カードの背景
-$card-white: #FFFFFF80;
+$card-white: #FFFFFFCD;
 
 //VRゴーグルの背景グラデーション
 $vr-bg-gray: #979695;
@@ -80,6 +80,9 @@ body{
   justify-content: center;
   align-items: flex-end;
   margin-right: 20px;
+  p{
+    color: #FFFFFF;
+  }
   &-now{
     font-size: 32px;
     margin-bottom: -2px;
@@ -87,17 +90,18 @@ body{
   &-slash{
     font-size:24px;
     margin-bottom: 2px;
-    color: $font-gray;
+    //color: $font-gray;
   }
   &-all{
     margin-bottom: 2px;
-    color: $font-gray;
+    //color: $font-gray;
   }
 
 }
 #question-card{
   display: flex;
   align-items: center;
+  flex-direction: column;
   height: $card-height;
   width: $card-width;
   background-color: $card-white;
@@ -106,11 +110,11 @@ body{
 #vr-goggles{
   display: flex;
   flex-direction: column;
-  //justify-content: center;
+  margin-top: 80px;
   width: $card-width;
   height: $vr-goggle-height;
   background: linear-gradient(to right bottom, $vr-bg-gray, $vr-bg-black);
-  border-radius: 80px;
+  border-radius: 70px;
 }
 #question_sentence{
   text-align: center;
@@ -123,6 +127,14 @@ body{
   display: flex;
   margin: 0px 15px 0px 15px;
   justify-content: space-around;
+}
+.triangle{
+  width: 0;
+  height: 0;
+  margin-top: 36px;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 25px solid #FFDADA;
 }
 /* ボタン　*/
 .button-circle {

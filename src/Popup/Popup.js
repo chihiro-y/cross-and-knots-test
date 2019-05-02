@@ -62,7 +62,15 @@ class Popup extends React.Component {
           catchcopy: "音楽好きで体を動かしたいあなたにはBeat Saberがぴったり！",
           description: "Beat Saberはスター・ウォーズのような剣でリズムに合わせて向かってくるノーツを切るVRリズムゲーム。",
           link: "https://store.steampowered.com/app/620980/Beat_Saber/"
-        }   
+        },
+        {
+          id: 7,
+          title: "Mages Tale",
+          video: <iframe src="https://www.youtube.com/embed/3rIjcRK_BNU" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullscreen></iframe>,
+          catchcopy: "音楽好きで体を動かしたいあなたにはBeat Saberがぴったり！",
+          description: "Beat Saberはスター・ウォーズのような剣でリズムに合わせて向かってくるノーツを切るVRリズムゲーム。",
+          link: "https://store.steampowered.com/app/620980/Beat_Saber/"
+        }    
       ]
     }
   }
