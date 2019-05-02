@@ -1,6 +1,3 @@
-//iPhone8とiPhoneXの横幅のサイズ
-$iphone-width: 375px; 
-
 //ボタンの色
 $orange : #FCBC81;
 $blue: #81D0FC;
@@ -16,12 +13,39 @@ $card-white: #FFFFFF80;
 
 //VRゴーグルの背景グラデーション
 $vr-bg-gray: #979695;
-$vr-bg-black: #393939;
+$vr-bg-black: #505050;
 
 //背景のグラデーション
 $bg-yellow: #FFF8D2;
 $bg-orange: #FCBB80;
 $bg-blue: #81D0FC;
+
+//ポップアップの背景グラデーション
+$popup-bg-topcolor: #D6E5FF;
+$popup-bg-middlecolor: #FFFFFF;
+$popup-bg-bottomcolor: #DCF2FF;
+
+//幅と高さ
+$card-width: 355px;
+$card-height: 355px;
+
+//VRの高さ
+$vr-goggle-height: 170px;
+
+//ポップアップ幅高さ
+$popup-width: 650px;
+$popup-height: 900px;
+$popup-inner-width: $popup-width - 26;
+$popup-inner-height: $popup-height - 26;
+
+//iPhone8とiPhoneXの横幅のサイズ
+$iphone-width: 375px; 
+
+//ポップアップの端の半径
+$popup-radius: 30px;
+
+//ポップアップの中のコンテンツのパディング
+$card-inner-padding: 25px;
 
 *{
   box-sizing: border-box;
@@ -29,6 +53,7 @@ $bg-blue: #81D0FC;
   font-family: tbudgothic-std,sans-serif;
   font-weight: 700;
   font-style: normal;
+  color: #4F4F4F;
 }
 html{
   height: 100%;
@@ -73,8 +98,8 @@ body{
 #question-card{
   display: flex;
   align-items: center;
-  height: 355px;
-  width: 355px;
+  height: $card-height;
+  width: $card-width;
   background-color: $card-white;
   border-radius: 50%;
 }
@@ -82,8 +107,8 @@ body{
   display: flex;
   flex-direction: column;
   //justify-content: center;
-  width: 355px;
-  height: 170px;
+  width: $card-width;
+  height: $vr-goggle-height;
   background: linear-gradient(to right bottom, $vr-bg-gray, $vr-bg-black);
   border-radius: 80px;
 }
@@ -94,62 +119,137 @@ body{
   word-wrap: break-word;
   padding: 20px 0px 20px 0px;
 }
-#button-choice{
+#button-choice-all{
   display: flex;
   margin: 0px 15px 0px 15px;
   justify-content: space-around;
 }
-
-.Button {
+/* ボタン　*/
+.button-circle {
   position: relative;
-  width: 60px;
-  height: 60px;
   border-radius: 50%;
   display: block;
   transition: background-color 0.3s ease-in;
   -webkit-transition: background-color 0.3s ease-in;
-
-  //○を選んだ場合
-  &_knots{
-    @extend .Button;
-    background: url(./img/ic_knots.png) center center/32px 32px no-repeat $orange;
-    &:hover {
-      background: url(./img/ic_knots.png) center center/32px 32px no-repeat $orange-hover;
+  &-choice{
+    @extend .button-circle;
+    width: 60px;
+    height: 60px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.25);
+    //○ボタン
+    &-knots{
+      @extend .button-circle-choice;
+      background: url(./img/ic_knots.png) center center/32px 32px no-repeat $orange;
+      &:hover {
+        background: url(./img/ic_knots.png) center center/32px 32px no-repeat $orange-hover;
+      }
+    }
+    //×ボタン
+    &-cross{
+      @extend .button-circle-choice;
+      background: url(./img/ic_cross.png) center center/32px 32px no-repeat $blue;
+      &:hover {
+        background: url(./img/ic_cross.png) center center/32px 32px no-repeat $blue-hover;
+      }
     }
   }
-  //×を選んだ場合
-  &_cross{
-    @extend .Button;
-    background: url(./img/ic_cross.png) center center/32px 32px no-repeat $blue;
-    &:hover {
-      background: url(./img/ic_cross.png) center center/32px 32px no-repeat $blue-hover;
+  &-share{
+    @extend .button-circle;
+    text-align: center;
+    width: 42px;
+    height: 42px;
+    &-twitter{
+      @extend .button-circle-share;
+      background-color: #2F96DF;
+    } 
+    &-facebook{
+      @extend .button-circle-share;
+      background-color: #3A5CA9;
+    } 
+    &-line{
+      @extend .button-circle-share;
+      background-color: #1DBF21;
+    } 
+    i {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    font-size: 20px;
+    color: #FFFFFF;
+    text-align: center;
+    -webkit-transform : translateY(-50%);
+    transform : translateY(-50%);
     }
   }
 }
-
-.popup {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  background-color: rgba(0,0,0, 0.5);
-}
-.popup_inner {
-  position: absolute;
-  left: 25%;
-  right: 25%;
-  top: 25%;
-  bottom: 25%;
-  margin: auto;
-  background: white;
-  animation: fadeIn 2s ease 0s 1 normal;
-  -webkit-animation: fadeIn 2s ease 0s 1 normal;
+.button-jump-steam {
+  position: relative;
+  display: inline-block;
+  width: 50%;
+  height: 48px;
+  background: linear-gradient(to right, #2F668D, #193042);
+  border-radius: 16px;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.3);
+  span {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    font-size: 20px;
+    color: #FFFFFF;
+    text-align: center;
+    -webkit-transform : translateY(-50%);
+    transform : translateY(-50%);
+  }
 }
 
+#popup {
+  &-outside{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: rgba(0,0,0, 0.5);
+  }
+  &-card-outer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: $popup-width;
+    height: $popup-height;
+    background: linear-gradient(to bottom, $popup-bg-bottomcolor, $popup-bg-middlecolor, $popup-bg-bottomcolor);
+    border-radius: $popup-radius;
+    animation: fadeIn 2s ease 0s 1 normal;
+    -webkit-animation: fadeIn 2s ease 0s 1 normal;
+  }
+  &-card-inner {
+    width: $popup-inner-width;
+    height: $popup-inner-height;
+    background: #FFFFFF;
+    border-radius: $popup-radius - 10;
+    padding: 0 $card-inner-padding 0 $card-inner-padding;
+    p {
+      color: #757575;
+    }
+  }
+  &-footer{
+    display: flex;
+    flex-direction: column;
+    width: $popup-inner-width - $card-inner-padding * 2;
+    text-align: center;
+    position: absolute;/*←絶対位置*/
+    bottom: 0; /*下に固定*/
+  }
+}
 @keyframes fadeIn {
   0% {opacity: 0}
   100% {opacity: 1}
@@ -159,3 +259,36 @@ body{
   0% {opacity: 0}
   100% {opacity: 1}
 }
+#result{
+  &-recommend{
+    margin: 20px 0 0 0;
+  }
+  &-game{
+    .highlight {
+      display: inline-block;
+      font-size: 26px;
+      background: linear-gradient(transparent 70%, #81D0FC 0%);
+      line-height: 1.4em;
+    }
+    margin-bottom: 15px;
+  }
+  &-video iframe{ 
+    width: $popup-inner-width - $card-inner-padding * 2;
+    height: 340px;
+    margin-bottom: 10px;
+  }
+  &-jump-outer{
+    margin-bottom: 10px; 
+  }
+  &-share-outer{
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+    position: relative;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+}
+
+

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import QuestionSentence from './QuestionSentence';
-import Button from './Button';
-import Popup from '../Popup';
+import ChoiceButton from './ChoiceButton';
+import Popup from '../Popup/Popup';
 import '../App.scss';
 
 class QuestionCard extends Component {
@@ -25,15 +25,15 @@ class QuestionCard extends Component {
 				<div id = 'question-card'>
 					<div id = 'vr-goggles'>
 						<QuestionSentence question_num = {this.state.question_num} />
-						<div id = 'button-choice'>
-							<Button choice = 'knots' question_num = {(answer = '1') => {this.onButtonClick(answer);}} />
-							<Button choice = 'cross' question_num = {(answer = '0') => {this.onButtonClick(answer);}} />
+						<div id = 'button-choice-all'>
+							<ChoiceButton choice = 'knots' question_num = {(answer = '1') => {this.onButtonClick(answer);}} />
+							<ChoiceButton choice = 'cross' question_num = {(answer = '0') => {this.onButtonClick(answer);}} />
 						</div>
 					</div>
 				</div>
 				<button onClick={this.togglePopup.bind(this)}>show popup</button>
         {this.state.showPopup ? 
-          <Popup text='Close Me' closePopup={this.togglePopup.bind(this)} />
+          <Popup result = {this.result()} closePopup={this.togglePopup.bind(this)} />
           : null
         }
 			</div>
@@ -63,6 +63,13 @@ class QuestionCard extends Component {
 			);
 		}
 		console.log(this.state.question_disabled);
+	}
+	result() {
+		console.log(this.state.question_answer);
+		if(this.state.question_answer[2] === '1'){
+			return 3;
+		}
+		else return 0;
 	}
 }
 
